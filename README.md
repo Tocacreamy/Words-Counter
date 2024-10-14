@@ -1,2 +1,2 @@
 # Words-Counter
-how to count a Words?
+how to count the Words?
