@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to count words</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height:unset;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        button{
+            margin-top: 10px;
+            border-radius: 5px;
+            height: 30px;
+            width: 100px;
+            border-style: none;
+            background-color: rgb(219, 66, 96);
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        button:hover{
+            border-style: none;
+            background-color: rgb(228, 0, 46);
+            color: white;
+            transition: 100ms;
+        }
+
+        button:active{
+            background-color: white;
+            border-style:solid;
+            border-color: crimson;
+            color: crimson;
+            transition: 0ms;
+            
+        }
+        textarea{
+            height: 200px;
+            width: 400px;
+        }
+        span{
+            color: rgb(255, 73, 109);
+        }
+    </style>
+</head>
+<body>
+    <main style="margin: auto;">
+        <div id="main" style="margin: auto;  width: 50%; display: flex; flex-direction: column; align-items: center; margin-top: 100px; padding-bottom: 100px;  border-radius: 10px;  box-shadow: 0px 5px 20px rgb(111, 125, 156);"></div>
+    </main>
+
+    <script type="text/babel">
+        const container = document.querySelector("#main");
+        const root = ReactDOM.createRoot(container);
+
+        function Input(){
+            const [words, setWords] = React.useState(0);
+
+            function GetWords(){
+                const canGet = document.getElementById("inWords").value;
+                let temp =  canGet.split(" ");
+                console.log(temp)
+                if (temp == ""){
+                    setWords(words)
+                }else{
+                    setWords(temp.length);
+                }
+            }
+            
+            return(
+                <>
+                    <form id="input"> 
+                        <textarea name="text" id="inWords" placeholder="Type something..." required ></textarea> 
+                        <button type="button" onClick = {GetWords}>Count!</button>
+                    </form><br/>
+
+                    <h1>{words} words</h1>
+                </>
+            )
+        }
+
+        function App() {
+            return(
+                <>
+                    <h1><span>Count the words!</span>🐔</h1>
+                    <Input/>
+                </>
+            )
+        }
+
+        root.render(<App/>)
+    </script>
+</body>
+</html>
