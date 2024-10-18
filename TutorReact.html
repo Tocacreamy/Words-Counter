@@ -57,6 +57,9 @@
         span{
             color: rgb(255, 73, 109);
         }
+        h2{
+            margin-bottom: -20px;
+        }
     </style>
 </head>
 <body>
@@ -68,19 +71,27 @@
         const container = document.querySelector("#main");
         const root = ReactDOM.createRoot(container);
 
+
         function Input(){
             const [words, setWords] = React.useState(0);
+            const [char, setChar] = React.useState(0);
 
             function GetWords(){
-                const canGet = document.getElementById("inWords").value;
-                let temp =  canGet.split(" ");
-                console.log(temp)
-                if (temp == ""){
+                const getter = document.getElementById("inWords").value;
+                let canGet = getter.trim();
+
+                let tempWord =  canGet.split(" ");
+                setChar(canGet.length);
+
+
+                if (tempWord == ""){
                     setWords(words)
                 }else{
-                    setWords(temp.length);
+                    setWords(tempWord.length);
                 }
             }
+
+
             
             return(
                 <>
@@ -89,7 +100,8 @@
                         <button type="button" onClick = {GetWords}>Count!</button>
                     </form><br/>
 
-                    <h1>{words} words</h1>
+                    <h2>{words} words</h2>
+                    <h2 >{char} character</h2>
                 </>
             )
         }
