@@ -96,8 +96,7 @@
             return(
                 <>
                     <form id="input"> 
-                        <textarea name="text" id="inWords" placeholder="Type something..." required ></textarea> 
-                        <button type="button" onClick = {GetWords}>Count!</button>
+                        <textarea name="text" id="inWords" placeholder="Type something..." required onChange = {GetWords}></textarea> 
                     </form><br/>
 
                     <h2>{words} words</h2>
